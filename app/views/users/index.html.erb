@@ -1,0 +1,41 @@
+<!DOCTYPE >
+<head><h2>Listing Users</h2></head>
+<body>
+	<% if !flash[:success].blank?%>
+		<p style="color:green"> <%= flash[:success] %></p>
+	<% end %>
+	<% if !flash[:error].blank?%>
+		<p style="color:red"><%= flash[:error] %></p>
+	<% end %>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th><%= sortable "first_name", "First Name" %></th>
+					<th><%= sortable "last_name", "Last Name" %></th>
+					<th><%= sortable "role", "Role" %></th>
+					<th><%= sortable "mail_id", "Mail ID" %></th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |u| %>
+					<tr>
+						<td><%= link_to u.first_name , user_path(u) %></td>
+						<td><%= u.last_name %></td>
+						<td><%= u.role %></td>
+						<td><%= u.mail_id %></td>
+						<td><%= link_to 'Edit User', edit_user_path(u)%>
+						<td><%= link_to 'Show Inventory', user_inventories_path(u.id)%>
+						<td><%= link_to 'Add Inventory', new_user_inventory_path(u.id)%>
+						<td><%= link_to 'Delete User', user_path(u), method: :delete ,data: {confirm: 'Are you sure to delete? This action will remove all inventories related'}%>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	
+	
+	<%= link_to 'Home' , welcome_index_path %>
+
+</body>
+

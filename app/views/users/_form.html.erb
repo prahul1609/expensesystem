@@ -1,0 +1,57 @@
+<%= form_for @user , url: @form_path do |f| %>
+	
+	<% if !flash[:success].blank?%>
+		<p style="color:green"> <%= flash[:success] %></p>
+	<% end %>
+	<% if !flash[:error].blank?%>
+		<p style="color:red"><%= flash[:error] %></p>
+	<% end %>
+	
+	<% if @user.errors.any? %>
+		<h2>
+		<%= pluralize(@user.errors.count, 'error') %> blocking the new user creation.
+		</h2>
+		<ul style="color:red">
+		<% @user.errors.full_messages.each do |msg|%>
+			<li><%= msg%></li>
+		<% end %>
+		</ul>
+	<% end %>
+			
+		<p>
+			<%= f.label :first_name%>
+			<%= f.text_field :first_name, required: true, placeholder: "First Name"%>
+		</p>
+		<p>
+			<%= f.label :last_name%>
+			<%= f.text_field :last_name, required: true, placeholder: "Last Name"%>
+		</p>
+		
+		<p>
+			<%= f.label :role%></br>
+			<%= f.radio_button :role , 'admin'%>Admin</br>
+			<%= f.radio_button :role , 'user'%>User</br>
+		</p>
+		
+		<p>
+			<%= f.label :mail_id%>
+			<%= f.text_field :mail_id, required: true, placeholder: "Mail ID"%>
+		</p>
+		<p>
+			<%= f.label :password%>
+			<%= f.password_field :password, required: true, placeholder: "Password"%>
+		</p>
+		<p>
+			<%= f.label :password_confirmation%>
+			<%= f.password_field :password_confirmation, required: true, placeholder: "Confirm Password"%>
+		</p>
+		
+		<p>
+			<%= f.submit 'Create User'%>
+		</p>
+		
+<% end %>
+
+<p>
+	<%= link_to 'Back to Users List' , users_path %>
+</p>

@@ -1,0 +1,61 @@
+##########################################################################
+Functional Specs:
+*****************
+
+User Page
+---------
+	Admin Functionality:
+
+		Creating new user 
+		Updating Existing user
+		Deleting User
+	
+	User :
+
+		See the user information
+		Go to user inventory
+		
+
+Inventory Page
+--------------
+	New Inventory add for user: Adding inventory with information like description, item-type, purchase_date, amount
+	Also select the name of partners related to inventory.Money will be divided expecting equal expense per head.
+	Specify the amount of money per head if not equal expense (to be taken in next sprint)
+	
+	Update inventory is possible, till it is not calculated.
+
+	Admin Functionality
+		Calculation of inventory to be done with one single click .
+		Money per participant to be shown alongwith due date and expenses date ranges.
+
+ 
+
+
+
+
+
+
+
+
+
+##########################################################################################################################################
+Developer Code Doc:
+
+
+########################################################
+User Controller
+***************
+	Admin for create update delete
+
+
+
+
+Inventory Controller
+*********************
+  TO manage inventory
+  Inventory table
+  UserID, Description , ItemType, PurchaseDate, PurchaseAmount
+
+
+  Users => One to Many relation => Inventory
+  

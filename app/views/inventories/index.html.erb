@@ -1,0 +1,43 @@
+<!DOCTYPE >
+<head>
+	<h2>Listing Inventories Related To 
+		<%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%>
+	</h2>
+</head>
+<body>
+	<% if !flash[:success].blank?%>
+		<p style="color:green"> <%= flash[:success] %></p>
+	<% end %>
+	<% if !flash[:error].blank?%>
+		<p style="color:red"><%= flash[:error] %></p>
+	<% end %>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th><%= sortable "description", "Description" %></th>
+					<th><%= sortable "item_type", "Item Type" %></th>
+					<th><%= sortable "purchase_date", "Purchase Date" %></th>
+					<th><%= sortable "amount_cents", "Amount" %></th>
+					<th><%= sortable "amount_currency", "Currency Type" %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @user_inventories.each do |u| %>
+					<tr>
+						<td><%= u.description %></td>
+						<td><%= u.item_type %></td>
+						<td><%= u.purchase_date %></td>
+						<td><%= u.amount_cents %></td>
+						<td><%= u.amount_currency %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	
+	
+	<%= link_to 'Home' , welcome_index_path %>
+	<%= link_to 'Back' , users_path %>
+
+</body>
+

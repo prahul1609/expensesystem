@@ -1,0 +1,20 @@
+<p>
+	<strong>First Name: </strong>
+	<%= @user.first_name %>
+</p>
+<p>
+	<strong>Last Name: </strong>
+	<%= @user.last_name %>
+</p>
+<p>
+	<strong>Role: </strong>
+	<%= @user.role.capitalize %>
+</p>
+<p>
+	<strong>Mail ID: </strong>
+	<%= @user.mail_id %>
+</p>
+<p>
+	<%= link_to 'Back', users_path %>
+	<%= link_to 'Edit', edit_user_path(@user) %>
+</p>

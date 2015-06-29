@@ -1,0 +1,52 @@
+<%= form_for @inventory , url: @form_path do |f| %>
+	
+	<% if !flash[:success].blank?%>
+		<p style="color:green"> <%= flash[:success] %></p>
+	<% end %>
+	<% if !flash[:error].blank?%>
+		<p style="color:red"><%= flash[:error] %></p>
+	<% end %>
+	
+	<% if @inventory.errors.any? %>
+		<h2>
+		<%= pluralize(@inventory.errors.count, 'error') %> blocking the new user creation.
+		</h2>
+		<ul style="color:red">
+		<% @inventory.errors.full_messages.each do |msg|%>
+			<li><%= msg%></li>
+		<% end %>
+		</ul>
+	<% end %>
+			
+	<p>
+		<%= f.label :description%>
+		<%= f.text_area :description, required: true, placeholder: "Inventory Description"%>
+	</p>
+	
+	<p>
+		<%= f.label :item_type%></br>
+		<%= f.radio_button :item_type , 'Electrics'%>Electrics</br>
+		<%= f.radio_button :item_type , 'Vegetables'%>Vegetables</br>
+		<%= f.radio_button :item_type , 'Grossary'%>Grossary</br>
+	</p>
+	
+	<p>
+		<%= f.label :purchase_date%>
+		<%= f.date_select :purchase_date, required: true%>
+	</p>
+	
+	<p>
+		<%= f.label :amount_cents%>
+		<%= f.text_field :amount_cents, required: true, placeholder: "Amount"%>
+	</p>
+
+	<p>
+		<%= f.submit 'Create Inventory'%>
+	</p>
+		
+<% end %>
+
+<p>
+	<%= link_to 'Back to User lists' , users_path %><br></br>
+	<%= link_to 'Inventory List' , inventories_path %>
+</p>
